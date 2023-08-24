@@ -32,64 +32,35 @@ public class AndroidApp {
             capabilities.setCapability("platformVersion",version);
             capabilities.setCapability("platformName", platform);
             capabilities.setCapability("isRealMobile", true);
-            //AppURL (Create from Wikipedia.apk sample in project)
-            capabilities.setCapability("app", "lt://proverbial-android"); //Enter your app url
             capabilities.setCapability("deviceOrientation", "PORTRAIT");
             capabilities.setCapability("console", true);
             capabilities.setCapability("network", false);
-            capabilities.setCapability("visual", true);
+            capabilities.setCapability("visual", true);  
             capabilities.setCapability("devicelog", true);
-            //capabilities.setCapability("geoLocation", "HK");
 
             String hub = "https://" + userName + ":" + accessKey + gridURL;
             driver = new AppiumDriver(new URL(hub), capabilities);
 
-            MobileElement color = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/color");
-            //Changes color to pink
-            color.click();
-            Thread.sleep(1000);
-            //Back to orginal color
-            color.click();
-
-            MobileElement text = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/Text");
-            //Changes the text to "Proverbial"
-            text.click();
-
-            //toast will be visible
-            MobileElement toast = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/toast");
-            toast.click();
-
-            //notification will be visible
-            MobileElement notification = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/notification");
-            notification.click();
-            Thread.sleep(2000);
-
-            //Opens the geolocation page
-            MobileElement geo = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/geoLocation");
-            geo.click();
+            driver.get("https://www.nike.com");
             Thread.sleep(5000);
 
-            //takes back to home page
-            MobileElement home = (MobileElement) driver.findElementByAccessibilityId("Home");
-            home.click();
-
-            //Takes to speed test page
-            MobileElement speedtest = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/speedTest");
-            speedtest.click();
+            driver.get("https://www.flipkart.com");
             Thread.sleep(5000);
 
-            MobileElement Home = (MobileElement) driver.findElementByAccessibilityId("Home");
-            Home.click();
+            driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div")).click();
+            Thread.sleep(3000);
+ 
 
-            //Opens the browser
-            MobileElement browser = (MobileElement) driver.findElementByAccessibilityId("Browser");
-            browser.click();
+            driver.get("https://www.tesla.com");
+            Thread.sleep(5000);
 
-            MobileElement url = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/url");
-            url.sendKeys("https://www.lambdatest.com");
 
-            MobileElement find = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/find");
-            find.click();
+            driver.get("https://www.lambdatest.com");
+            Thread.sleep(5000);
+
+
+            driver.get("https://www.lambdatest.com/pricing");
+            Thread.sleep(5000);
 
             driver.quit();
 
